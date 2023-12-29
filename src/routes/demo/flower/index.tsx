@@ -16,6 +16,7 @@ export default component$(() => {
     number: 20,
   });
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
     const timeout = setTimeout(() => (state.count = 1), 500);
     cleanup(() => clearTimeout(timeout));
@@ -25,7 +26,7 @@ export default component$(() => {
   });
 
   return (
-    <div class="container container-center">
+    <div class="container-center container">
       <div role="presentation" class="ellipsis"></div>
       <h1>
         <span class="highlight">Generate</span> Flowers
@@ -36,7 +37,7 @@ export default component$(() => {
         type="range"
         value={state.number}
         max={50}
-        onInput$={(ev, el) => {
+        onInput$={(_ev, el) => {
           state.number = el.valueAsNumber;
         }}
       />
